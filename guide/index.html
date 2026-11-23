@@ -253,6 +253,31 @@ a.yt{font-weight:600;white-space:nowrap}
 .pgbrk,a.pgin,a.pdfp,tr.pgrow,g.pgsv{display:none!important}li.pgli:has(> .pgbrk:only-child){display:none}
 
 .gbhr{border:0;border-top:1px solid var(--line,#ddd);margin:2em 0}
+/* EBK 글자 1.15(저자 21:03 · 감사 2101 · 2103) — 제목 · 소제목 그대로, 본문 ×1.15, 본문보다 작은 설명 글 ×1.25, 이름표 ×1.15. 악보 · 단추 · 띠 그대로, --k 안 씀. 글 칸 밖으로 넘치는 것(그림 칸 · 긴 출처 · 긴 경로 · 감싸개 없는 표)은 칸 안에서 — 문서 가로 스크롤 0 */
+body{font-size:calc(var(--k,1)*17.25px)}
+section.ch>blockquote:first-of-type,blockquote{font-size:calc(var(--k,1)*18.1px)}
+nav.toc{font-size:calc(var(--k,1)*17.25px)}
+h4{font-size:calc(var(--k,1)*18.5px)}
+section.bk table.tb,table.mdt{font-size:calc(var(--k,1)*17.5px)}
+p.mline{font-size:calc(var(--k,1)*18.75px)}
+section.bk .spiral,p.gblink,.dfirst,p.forscore,.dtech,.dlab{font-size:calc(var(--k,1)*17.5px)}
+.art{max-width:100%;overflow-x:auto}
+section.ch table:not(.tb){display:block;max-width:100%;overflow-x:auto}
+code.cp{white-space:normal;overflow-wrap:anywhere}
+span.nw{display:inline-block;max-width:100%;white-space:normal!important;text-indent:0}
+section.bk .olab,section.bk .mtag{font-size:calc(var(--k,1)*14.4px)}
+section.bk .notes .nl,section.bk .spiral .sl{font-size:calc(var(--k,1)*13.2px)}
+section.bk .cq b.n{font-size:calc(var(--k,1)*15px)}
+section.part .sectitle .idx .lb{font-size:calc(var(--k,1)*15px)}
+/* 장 머리 줄임(저자 21:30) — 장 번호 약 본문 2.5배 · 장 제목 약 1.5배 */
+section.bk .chnum{font-size:calc(var(--k,1)*44px);margin-top:calc(var(--k,1)*24px)}
+section.bk .chtitle{font-size:calc(var(--k,1)*27px)}
+section.bk .booktitle{font-size:calc(var(--k,1)*28px)}
+section.part .sectitle .n{font-size:calc(var(--k,1)*52px)}
+section.part .sectitle .t{font-size:calc(var(--k,1)*27px)}
+/* 줄 나눔은 낱말(띄어쓰기) 단위 · 마지막 줄 짧은 꼬리 줄이기(저자 21:31) */
+section.ch{word-break:keep-all;overflow-wrap:break-word}
+section.ch p,section.ch li,section.ch blockquote,section.ch td,section.ch div{text-wrap:pretty}
 </style><style>span.gbnote{font-size:.82em;color:#777;font-family:-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif}span.gbnote a{color:#155E63}</style></head><body><div id="jsmsg" style="position:sticky;top:0;z-index:99;background:#fde68a;color:#111;padding:8px 12px;font-size:14px">프로그램 준비 중… — 이 노란 줄이 사라지지 않으면 프로그램이 돌지 않은 것입니다(아이패드 파일 앱이면 사파리 링크판으로 열어 주세요).</div><script>window.onerror=function(m,u,l,c){if(m==='Script error.'&&!l)return;var d=document.getElementById("jsmsg");if(d){d.style.display="block";d.style.background="#fecaca";d.textContent="오류: "+m+" (줄 "+l+":"+c+") — 이 글을 Claude에게 알려 주세요"}};</script><div class="wrap">
 <div class="deck"><b class="t">재즈 즉흥연주 <span class="dim">— 가이드북</span></b>
  <button type="button" id="cfgb" class="cfgb" aria-expanded="false" aria-controls="cfg">⚙ 설정</button>
@@ -274,7 +299,7 @@ if(s){s.value=TNSSET;s.onchange=function(){TNSSET=s.value;sv('ebk-jisg-set',TNSS
 })();</script>
 <button type="button" id="back" hidden>← 돌아가기</button>
 <h1 class="cover">『재즈 즉흥연주』 가이드북<br><small>이 책에 왜 이것이 들어갔나</small></h1><p class="cover2"><span>YOUNGHO EDITION</span></p>
-<p class="dim" style="font-family:var(--f-ui);margin-top:0">천영호 · 듣는 전자책(EBK-001) · 가이드북 R11 — 원문 · 만든 날 2026-11-23 19:05 · 가이드북 R11(본책 R93 기준)</p>
+<p class="dim" style="font-family:var(--f-ui);margin-top:0">천영호 · 듣는 전자책(EBK-001) · 가이드북 R11 — 원문 · 만든 날 2026-11-23 21:33 · 가이드북 R11(본책 R93 기준)</p>
 <nav class="toc"><b>차례</b><ul><li><a href="#c0">가이드북 — 머리 · 차례</a></li>
 <li><a href="#c1">머리말 — 이 책이 생긴 까닭</a></li>
 <li><a href="#c2">이 책은 어떻게 만들어졌나 — 2026년 7월 ~ 10월</a></li>
@@ -1430,7 +1455,7 @@ window.addEventListener('popstate',function(){back()});   /* 사파리 뒤로 �
 var S=document.getElementById('store'),MSG=document.getElementById('st-msg');S.hidden=false;
 var PATHS=[];IDS.forEach(function(s){Object.values(DR[s].src).forEach(function(p){PATHS.push(p)})});
 var URLS={},db=null;
-function idb(){return new Promise(function(r){if(db)return r(db);try{var q=indexedDB.open('ebk-jisg-byeolchaek',1);q.onupgradeneeded=function(){q.result.createObjectStore('a')};q.onsuccess=function(){db=q.result;r(db)};q.onerror=function(){r(null)}}catch(e){r(null)}})}
+function idb(){return new Promise(function(r){if(db)return r(db);try{var q=indexedDB.open('ebk-jisg',1);q.onupgradeneeded=function(){q.result.createObjectStore('a')};q.onsuccess=function(){db=q.result;r(db)};q.onerror=function(){r(null)}}catch(e){r(null)}})}
 function get(k){return idb().then(function(d){return new Promise(function(r){if(!d)return r(null);try{var q=d.transaction('a').objectStore('a').get(k);q.onsuccess=function(){r(q.result||null)};q.onerror=function(){r(null)}}catch(e){r(null)}})})}
 function put(k,v){return idb().then(function(d){return new Promise(function(r){if(!d)return r(false);try{var t=d.transaction('a','readwrite');t.objectStore('a').put(v,k);t.oncomplete=function(){r(true)};t.onerror=function(){r(false)}}catch(e){r(false)}})})}
 function stat(){var miss=PATHS.filter(function(p){return !URLS[p]}),n=PATHS.length-miss.length;MSG.textContent='이 기기에 '+n+'/'+PATHS.length+' 파일'+(n<PATHS.length?(P.ghPage?' — 없는 것: '+miss.map(function(p){return p.split('/').pop()}).join(' · ')+' → 「파일에서 넣기」로':' — 없는 것은 인터넷으로 들음'):' — 인터넷 없이 들을 수 있음')}

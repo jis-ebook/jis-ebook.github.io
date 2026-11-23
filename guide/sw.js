@@ -1,5 +1,5 @@
-// JIS 가이드북 듣는 전자책 — 페이지 보관(판 56f68967). 먼저 기기 것을 보이고, 인터넷이 되면 새 판을 받아 다음에 씀.
-const C = 'ebk-jisg-56f68967', FILES = ['./', './index.html', './manifest.webmanifest', './icon-180.png', './icon-512.png'];
+// JIS 가이드북 듣는 전자책 — 페이지 보관(판 c189e13a). 먼저 기기 것을 보이고, 인터넷이 되면 새 판을 받아 다음에 씀.
+const C = 'ebk-jisg-c189e13a', FILES = ['./', './index.html', './manifest.webmanifest', './icon-180.png', './icon-512.png'];
 const H = {};   // 파일마다 내용 지문 — 새 판에서 바뀐 파일만 새로 받음(조판 11-18 22:3x, 저자: 올릴 때마다 처음 재생이 10–20초 늦음)
 const BUSY = {};
 const mark = (r, h) => r.blob().then(b => new Response(b, { status: 200, headers: { 'Content-Type': r.headers.get('Content-Type') || '', 'X-H': h } }));
@@ -12,7 +12,7 @@ self.addEventListener('install', e => { self.skipWaiting(); e.waitUntil(caches.o
   const q = now.slice(); const run = () => q.length ? one(q.shift()).then(run) : Promise.resolve();
   return Promise.all([run(), run()]).then(() => Promise.all(later.map(keep)));
 })); });
-self.addEventListener('activate', e => { e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k.startsWith('ebk-jisg-') && k !== C).map(k => caches.delete(k)))).then(() => self.clients.claim())); });
+self.addEventListener('activate', e => { /* 제 책 옛 판만 지움 — 같은 주소(github.io) 아래 다른 책 보관본은 그대로(PRG 11-23 · EBK 조판 2001 · TNS 감사 2053) */ e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k.startsWith('ebk-jisg-') && k !== C).map(k => caches.delete(k)))).then(() => self.clients.claim())); });
 self.addEventListener('fetch', e => {
   const u = new URL(e.request.url); if (e.request.method !== 'GET' || u.origin !== location.origin) return;
   const rg = e.request.headers.get('range');   // 아이패드 사파리는 음원을 조각(Range)으로 달라 함 — 보관본 전체(200)를 주면 첫 재생이 안 나옴 → 그 조각만 206으로(저자 11-18 01:11)
