@@ -1,5 +1,5 @@
-// JIS 가이드북 듣는 전자책 — 페이지 보관(판 c189e13a). 먼저 기기 것을 보이고, 인터넷이 되면 새 판을 받아 다음에 씀.
-const C = 'ebk-jisg-c189e13a', FILES = ['./', './index.html', './manifest.webmanifest', './icon-180.png', './icon-512.png'];
+// JIS 가이드북 듣는 전자책 — 페이지 보관(판 d93fe955). 먼저 기기 것을 보이고, 인터넷이 되면 새 판을 받아 다음에 씀.
+const C = 'ebk-jisg-d93fe955', FILES = ['./', './index.html', './manifest.webmanifest', './icon-180.png', './icon-512.png'];
 const H = {};   // 파일마다 내용 지문 — 새 판에서 바뀐 파일만 새로 받음(조판 11-18 22:3x, 저자: 올릴 때마다 처음 재생이 10–20초 늦음)
 const BUSY = {};
 const mark = (r, h) => r.blob().then(b => new Response(b, { status: 200, headers: { 'Content-Type': r.headers.get('Content-Type') || '', 'X-H': h } }));
